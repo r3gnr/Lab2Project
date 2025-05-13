@@ -28,8 +28,15 @@ public class Ranker
         if (vacancies == null)
             throw new ArgumentNullException(nameof(vacancies));
 
+        // Обновляем Relevance для каждой вакансии
+        foreach (var vacancy in vacancies)
+        {
+            vacancy.Relevance = CalculateRelevance(vacancy);
+        }
+
+        // Затем сортируем по обновленному свойству
         return vacancies
-            .OrderByDescending(v => CalculateRelevance(v))
+            .OrderByDescending(v => v.Relevance)
             .ToList();
     }
 }

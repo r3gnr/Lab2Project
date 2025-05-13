@@ -46,7 +46,7 @@ public class RankerTests
     {
         var vacancy = new Vacancy { Skills = new List<string>(vacancySkills) };
         var ranker = new Ranker(new List<string>(userSkills));
-        var result = ranker.CalculateRelevance(vacancy);    
+        var result = ranker.CalculateRelevance(vacancy);
         Assert.That(result, Is.EqualTo(expected));
     }
 }
